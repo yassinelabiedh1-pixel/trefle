@@ -1,0 +1,9 @@
+# fichiers de marque lourds et brouillons : pas sur GitHub
+*.pdf
+*.ai
+/*.jpg
+/*.png
+/menu/
+/.claude/
+/qr/*.png
+__pycache__/
