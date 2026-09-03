@@ -57,9 +57,19 @@
   window.__tfVideoOk = function (video) {
     video.muted = true;
     video.defaultMuted = true;
+    video.playsInline = true;
     video.closest(".dish-photo").classList.add("has-video");
     watchVideo(video);
   };
+
+  // Sécurité : Safari peut avoir chargé la vidéo avant que le script ne soit prêt
+  function primeVideos() {
+    main.querySelectorAll(".dish-photo video").forEach(function (v) {
+      v.muted = true;
+      v.playsInline = true;
+      if (v.readyState >= 1 && !v.closest(".dish-photo").classList.contains("has-video")) window.__tfVideoOk(v);
+    });
+  }
 
   // La vidéo ne joue que lorsqu'elle est à l'écran
   function watchVideo(video) {
@@ -92,13 +102,13 @@
     let video;
     if (item.video) {
       video =
-        '<video muted loop playsinline preload="metadata" data-fixed="1" oncanplay="window.__tfVideoOk(this)">' +
+        '<video muted loop playsinline autoplay preload="auto" data-fixed="1" onloadedmetadata="window.__tfVideoOk(this)">' +
         '<source src="' + item.video + '" onerror="window.__tfVideoFail(this)" />' +
         "</video>";
     } else {
       const vslug = item.photo ? slugify(item.name.fr) : src.replace(/^images\/produits\//, "").replace(/\.[a-z]+$/, "");
       video =
-        '<video muted loop playsinline preload="metadata" oncanplay="window.__tfVideoOk(this)">' +
+        '<video muted loop playsinline autoplay preload="auto" onloadedmetadata="window.__tfVideoOk(this)">' +
         '<source src="images/produits/' + vslug + '.mp4" onerror="window.__tfVideoFail(this)" />' +
         '<source src="images/produits/' + vslug + '.webm" onerror="window.__tfVideoFail(this)" />' +
         "</video>";
@@ -196,6 +206,7 @@
 
     highlightIndex();
     initReveal();
+    setTimeout(primeVideos, 800);
   }
 
   // Apparition douce au défilement
