@@ -48,44 +48,63 @@
 
   // Vidéo : si images/produits/<nom>.mp4 (ou .webm) existe, elle joue en boucle,
   // muette, par-dessus la photo. Sinon la vidéo disparaît et la photo reste.
+  // iPhone : on n'attend pas les événements de chargement (Safari les retient) ;
+  // on tente play() dès que le produit est à l'écran, et on juge sur le résultat.
   window.__tfVideoFail = function (src) {
     const video = src.closest("video");
+    if (!video) return;
     if (video.dataset.fixed === "1" || src.nextElementSibling === null) { video.remove(); return; }
     src.remove();
     video.load();
   };
-  window.__tfVideoOk = function (video) {
+
+  function markVideo(video) {
+    const box = video.closest(".dish-photo");
+    if (box) box.classList.add("has-video");
+  }
+
+  function tryPlay(video) {
+    if (!video.isConnected) return;
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
-    video.closest(".dish-photo").classList.add("has-video");
-    watchVideo(video);
-  };
-
-  // Sécurité : Safari peut avoir chargé la vidéo avant que le script ne soit prêt
-  function primeVideos() {
-    main.querySelectorAll(".dish-photo video").forEach(function (v) {
-      v.muted = true;
-      v.playsInline = true;
-      if (v.readyState >= 1 && !v.closest(".dish-photo").classList.contains("has-video")) window.__tfVideoOk(v);
+    video.setAttribute("playsinline", "");
+    const p = video.play();
+    if (!p || !p.then) { markVideo(video); return; }
+    p.then(function () {
+      markVideo(video);
+    }).catch(function (err) {
+      // Pas de fichier (ou format illisible) : on retire la vidéo, la photo reste.
+      if (err && err.name === "NotSupportedError") { video.remove(); return; }
+      // Lecture refusée (mode économie d'énergie…) : on garde la photo, on réessaiera au toucher.
+      video.dataset.retry = "1";
     });
   }
 
-  // La vidéo ne joue que lorsqu'elle est à l'écran
-  function watchVideo(video) {
-    if (video.dataset.watched === "1") return;
-    video.dataset.watched = "1";
-    if (!("IntersectionObserver" in window)) { video.play().catch(function () {}); return; }
-    if (!window.__tfVideoIO) {
-      window.__tfVideoIO = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) e.target.play().catch(function () {});
-          else e.target.pause();
-        });
-      }, { threshold: 0.25 });
-    }
-    window.__tfVideoIO.observe(video);
+  function initVideos() {
+    const videos = main.querySelectorAll(".dish-photo video");
+    if (!videos.length) return;
+    if (window.__tfVideoIO) window.__tfVideoIO.disconnect();
+    if (!("IntersectionObserver" in window)) { videos.forEach(tryPlay); return; }
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) tryPlay(e.target);
+        else if (!e.target.paused) e.target.pause();
+      });
+    }, { threshold: 0.2 });
+    videos.forEach(function (v) { io.observe(v); });
+    window.__tfVideoIO = io;
   }
+
+  // Un toucher sur la page relance les vidéos refusées (économie d'énergie iOS)
+  ["touchstart", "click"].forEach(function (ev) {
+    document.addEventListener(ev, function () {
+      main.querySelectorAll('.dish-photo video[data-retry="1"]').forEach(function (v) {
+        delete v.dataset.retry;
+        tryPlay(v);
+      });
+    }, { passive: true });
+  });
 
   function pad(n) { return n < 10 ? "0" + n : String(n); }
 
@@ -102,13 +121,13 @@
     let video;
     if (item.video) {
       video =
-        '<video muted loop playsinline autoplay preload="auto" data-fixed="1" onloadedmetadata="window.__tfVideoOk(this)">' +
+        '<video muted loop playsinline preload="metadata" data-fixed="1">' +
         '<source src="' + item.video + '" onerror="window.__tfVideoFail(this)" />' +
         "</video>";
     } else {
       const vslug = item.photo ? slugify(item.name.fr) : src.replace(/^images\/produits\//, "").replace(/\.[a-z]+$/, "");
       video =
-        '<video muted loop playsinline autoplay preload="auto" onloadedmetadata="window.__tfVideoOk(this)">' +
+        '<video muted loop playsinline preload="metadata">' +
         '<source src="images/produits/' + vslug + '.mp4" onerror="window.__tfVideoFail(this)" />' +
         '<source src="images/produits/' + vslug + '.webm" onerror="window.__tfVideoFail(this)" />' +
         "</video>";
@@ -206,7 +225,7 @@
 
     highlightIndex();
     initReveal();
-    setTimeout(primeVideos, 800);
+    initVideos();
   }
 
   // Apparition douce au défilement
