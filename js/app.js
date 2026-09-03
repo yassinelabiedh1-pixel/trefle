@@ -55,9 +55,27 @@
     video.load();
   };
   window.__tfVideoOk = function (video) {
+    video.muted = true;
+    video.defaultMuted = true;
     video.closest(".dish-photo").classList.add("has-video");
-    video.play().catch(function () {});
+    watchVideo(video);
   };
+
+  // La vidéo ne joue que lorsqu'elle est à l'écran
+  function watchVideo(video) {
+    if (video.dataset.watched === "1") return;
+    video.dataset.watched = "1";
+    if (!("IntersectionObserver" in window)) { video.play().catch(function () {}); return; }
+    if (!window.__tfVideoIO) {
+      window.__tfVideoIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) e.target.play().catch(function () {});
+          else e.target.pause();
+        });
+      }, { threshold: 0.25 });
+    }
+    window.__tfVideoIO.observe(video);
+  }
 
   function pad(n) { return n < 10 ? "0" + n : String(n); }
 
