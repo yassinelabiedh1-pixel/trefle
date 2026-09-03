@@ -10,8 +10,7 @@
      images/produits/<nom-simplifié>.webp (puis .jpg, .jpeg, .png).
      La liste exacte des noms attendus est dans images/LISEZ-MOI.txt.
      Pour forcer un autre fichier : photo: "images/produits/x.jpg"
-   - "layout": "plates" = grandes photos, "compact" = petites photos
-     (boissons).
+   - "layout": "plates" (grande photo au-dessus du texte).
    - "groups" : sous-parties d'un set (ex. Boissons).
    ============================================================ */
 
@@ -195,7 +194,7 @@ const MENU = [
   },
   {
     id: "boissons",
-    layout: "compact",
+    layout: "plates",
     name: { fr: "Boissons & Créations", en: "Drinks & Creations" },
     note: { fr: "", en: "" },
     groups: [
