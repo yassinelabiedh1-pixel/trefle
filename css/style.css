@@ -385,22 +385,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .dish {
   display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 1.1rem;
-  padding: 1.15rem 0;
+  grid-template-columns: 1fr;
+  gap: 0.95rem;
+  padding: 1.4rem 0 1.5rem;
   border-bottom: 1px solid var(--line);
 }
 
 /* pas de trait sous le dernier produit : la ligne au trèfle suffit */
 .ledger .dish:last-child { border-bottom: 0; }
 
-.ledger.compact .dish { grid-template-columns: 64px 1fr; padding: 0.85rem 0; }
+.ledger.compact .dish { grid-template-columns: 104px 1fr; gap: 1.1rem; align-items: center; padding: 0.95rem 0; }
 
 /* photo carrée ; tant qu'elle manque, un trèfle en attend une */
 .dish-photo {
   position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: 4px;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
   overflow: hidden;
   background: var(--photo-bg);
   display: flex;
@@ -408,9 +408,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   justify-content: center;
 }
 
+.ledger.compact .dish-photo { aspect-ratio: 1 / 1; border-radius: 4px; }
+
 .dish-photo > svg {
   position: absolute;
-  width: 38%;
+  width: 30%;
   height: auto;
   color: var(--photo-clover);
 }
@@ -431,10 +433,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .dish-photo .stamp {
   position: absolute;
   z-index: 2;
-  right: 5px;
-  bottom: 5px;
-  width: 18px;
-  height: 18px;
+  right: 8px;
+  bottom: 8px;
+  width: 24px;
+  height: 24px;
   border-radius: 999px;
   background: var(--bg);
   color: var(--ink);
@@ -446,7 +448,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
 }
 
-.dish-photo .stamp svg { width: 9px; height: 9px; }
+.dish-photo .stamp svg { width: 12px; height: 12px; }
+.ledger.compact .dish-photo .stamp { width: 18px; height: 18px; right: 5px; bottom: 5px; }
+.ledger.compact .dish-photo .stamp svg { width: 9px; height: 9px; }
 
 .dish-photo.has-img .stamp { opacity: 1; transform: none; }
 
@@ -461,7 +465,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .dish-name {
   font-family: var(--serif);
-  font-size: 1.32rem;
+  font-size: 1.5rem;
   line-height: 1.15;
   font-weight: 400;
 }
@@ -601,7 +605,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .set-note { margin-top: 0; justify-self: end; text-align: right; }
   .ledger { grid-template-columns: 1fr 1fr; column-gap: 3rem; }
   .ledger.compact { grid-template-columns: 1fr 1fr 1fr; column-gap: 2.2rem; }
-  .dish { grid-template-columns: 120px 1fr; gap: 1.3rem; }
+  .dish { gap: 1.1rem; padding: 1.6rem 0 1.8rem; }
+  .ledger.compact .dish { grid-template-columns: 96px 1fr; }
   .rule { padding: 0 2.4rem; }
   .footer { padding: 0 2.4rem 2.6rem; }
   .footer-grid { grid-template-columns: repeat(3, 1fr); }
