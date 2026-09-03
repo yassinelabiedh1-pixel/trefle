@@ -394,7 +394,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* pas de trait sous le dernier produit : la ligne au trèfle suffit */
 .ledger .dish:last-child { border-bottom: 0; }
 
-.ledger.compact .dish { grid-template-columns: 104px 1fr; gap: 1.1rem; align-items: center; padding: 0.95rem 0; }
 
 /* photo carrée ; tant qu'elle manque, un trèfle en attend une */
 .dish-photo {
@@ -407,8 +406,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: center;
   justify-content: center;
 }
-
-.ledger.compact .dish-photo { aspect-ratio: 1 / 1; border-radius: 4px; }
 
 .dish-photo > svg {
   position: absolute;
@@ -449,8 +446,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .dish-photo .stamp svg { width: 12px; height: 12px; }
-.ledger.compact .dish-photo .stamp { width: 18px; height: 18px; right: 5px; bottom: 5px; }
-.ledger.compact .dish-photo .stamp svg { width: 9px; height: 9px; }
+
 
 .dish-photo.has-img .stamp { opacity: 1; transform: none; }
 
@@ -470,7 +466,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 400;
 }
 
-.ledger.compact .dish-name { font-size: 1.15rem; }
 
 .dish-price {
   font-family: var(--serif);
@@ -604,9 +599,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .set-head { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; }
   .set-note { margin-top: 0; justify-self: end; text-align: right; }
   .ledger { grid-template-columns: 1fr 1fr; column-gap: 3rem; }
-  .ledger.compact { grid-template-columns: 1fr 1fr 1fr; column-gap: 2.2rem; }
   .dish { gap: 1.1rem; padding: 1.6rem 0 1.8rem; }
-  .ledger.compact .dish { grid-template-columns: 96px 1fr; }
   .rule { padding: 0 2.4rem; }
   .footer { padding: 0 2.4rem 2.6rem; }
   .footer-grid { grid-template-columns: repeat(3, 1fr); }
