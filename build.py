@@ -81,7 +81,10 @@ lines = [
     "",
     "Déposez chaque photo dans images/produits/ avec exactement ce nom",
     "(format .webp de préférence, sinon .jpg / .jpeg / .png).",
-    "Format conseillé : carré, 800 x 800 px minimum.",
+    "Format conseillé : 4:3 ou carré, 900 px de large minimum.",
+    "",
+    "VIDÉO : même nom en .mp4 (muette, courte, moins de 5 Mo) = elle joue en",
+    "boucle à la place de la photo. Ex. espresso.mp4 à côté de espresso.webp.",
     "",
 ]
 for n in names:

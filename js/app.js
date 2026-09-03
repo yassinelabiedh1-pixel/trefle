@@ -46,6 +46,19 @@
     img.closest(".dish-photo").classList.add("has-img");
   };
 
+  // Vidéo : si images/produits/<nom>.mp4 (ou .webm) existe, elle joue en boucle,
+  // muette, par-dessus la photo. Sinon la vidéo disparaît et la photo reste.
+  window.__tfVideoFail = function (src) {
+    const video = src.closest("video");
+    if (video.dataset.fixed === "1" || src.nextElementSibling === null) { video.remove(); return; }
+    src.remove();
+    video.load();
+  };
+  window.__tfVideoOk = function (video) {
+    video.closest(".dish-photo").classList.add("has-video");
+    video.play().catch(function () {});
+  };
+
   function pad(n) { return n < 10 ? "0" + n : String(n); }
 
   function photoHTML(item) {
@@ -58,11 +71,26 @@
       src = "images/produits/" + slug + "." + PHOTO_EXTS[0];
       attrs = ' data-slug="' + slug + '" data-ext="0"';
     }
+    let video;
+    if (item.video) {
+      video =
+        '<video muted loop playsinline preload="metadata" data-fixed="1" oncanplay="window.__tfVideoOk(this)">' +
+        '<source src="' + item.video + '" onerror="window.__tfVideoFail(this)" />' +
+        "</video>";
+    } else {
+      const vslug = item.photo ? slugify(item.name.fr) : src.replace(/^images\/produits\//, "").replace(/\.[a-z]+$/, "");
+      video =
+        '<video muted loop playsinline preload="metadata" oncanplay="window.__tfVideoOk(this)">' +
+        '<source src="images/produits/' + vslug + '.mp4" onerror="window.__tfVideoFail(this)" />' +
+        '<source src="images/produits/' + vslug + '.webm" onerror="window.__tfVideoFail(this)" />' +
+        "</video>";
+    }
     return (
       '<div class="dish-photo">' +
       CLOVER +
       '<img src="' + src + '" alt="' + item.name[lang] + '" loading="lazy"' + attrs +
       ' onload="window.__tfImgLoaded(this)" onerror="window.__tfImgFallback(this)" />' +
+      video +
       '<span class="stamp">' + CLOVER + "</span>" +
       "</div>"
     );

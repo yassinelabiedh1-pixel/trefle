@@ -426,6 +426,21 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .dish:hover .dish-photo img { transform: scale(1.06); }
 
+/* vidéo en boucle par-dessus la photo (la photo sert d'image d'attente) */
+.dish-photo video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s var(--ease);
+  pointer-events: none;
+}
+
+.dish-photo.has-video video { opacity: 1; }
+
 /* le petit sceau trèfle, comme sur les emballages */
 .dish-photo .stamp {
   position: absolute;
