@@ -1,7 +1,7 @@
 # Treffel Padel Club — La carte
 
 Site de la carte du club : `site/`. Publié sur GitHub Pages (branche `gh-pages`) :
-https://yassinelabiedh1-pixel.github.io/treffel-menu/
+https://yassinelabiedh1-pixel.github.io/trefle/
 
 ## Mettre la carte à jour
 
