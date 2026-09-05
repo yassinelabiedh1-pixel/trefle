@@ -1,8 +1,8 @@
 /* ============================================================
    Treffel Padel Club — La carte
    Deux options de couleur : html[data-theme="forest"] (fond forêt,
-   écriture crème) et html[data-theme="cream"] (fond crème, écriture
-   forêt). Le trèfle est la seule ornementation.
+   écriture blanche) et html[data-theme="cream"] (fond blanc,
+   écriture forêt — l'inverse). Le trèfle est la seule ornementation.
    ============================================================ */
 
 :root {
@@ -10,7 +10,7 @@
   --green: #1b5632;
   --bordeaux: #671c32;
   --pale: #f1efb6;
-  --cream: #e5d8c5;
+  --cream: #ffffff;
   --lilac: #ddd3e7;
 
   --serif: "Teodor", "Instrument Serif", Georgia, serif;
@@ -23,30 +23,30 @@ html[data-theme="forest"] {
   --bg: var(--forest);
   --bg-alt: #1e3128;
   --ink: var(--cream);
-  --ink-soft: rgba(229, 216, 197, 0.72);
-  --ink-faint: rgba(229, 216, 197, 0.42);
-  --line: rgba(229, 216, 197, 0.28);
-  --line-strong: rgba(229, 216, 197, 0.6);
+  --ink-soft: rgba(255, 255, 255, 0.72);
+  --ink-faint: rgba(255, 255, 255, 0.42);
+  --line: rgba(255, 255, 255, 0.28);
+  --line-strong: rgba(255, 255, 255, 0.6);
   --accent: var(--pale);
   --photo-bg: #1b5632;
-  --photo-clover: rgba(229, 216, 197, 0.18);
+  --photo-clover: rgba(255, 255, 255, 0.18);
   --pattern: var(--pattern-cream);
   --bar: rgba(34, 55, 44, 0.94);
 }
 
 html[data-theme="cream"] {
   --bg: var(--cream);
-  --bg-alt: #ddcfb9;
+  --bg-alt: #f4f4f1;
   --ink: var(--forest);
   --ink-soft: rgba(34, 55, 44, 0.74);
   --ink-faint: rgba(34, 55, 44, 0.42);
   --line: rgba(34, 55, 44, 0.26);
   --line-strong: rgba(34, 55, 44, 0.6);
   --accent: var(--bordeaux);
-  --photo-bg: #d6c7ae;
+  --photo-bg: #eef0ec;
   --photo-clover: rgba(34, 55, 44, 0.2);
   --pattern: var(--pattern-forest);
-  --bar: rgba(229, 216, 197, 0.94);
+  --bar: rgba(255, 255, 255, 0.94);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -95,6 +95,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   flex-direction: column;
   padding: 1.1rem 1.25rem 0;
   overflow: hidden;
+  overflow: clip;
   isolation: isolate;
 }
 

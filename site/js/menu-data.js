@@ -33,7 +33,7 @@ const UI_TEXT = {
   madeNote:   { fr: "Fait maison, chaque jour", en: "Homemade, every day" },
   setWord:    { fr: "Set", en: "Set" },
   themeForest:{ fr: "Forêt", en: "Forest" },
-  themeCream: { fr: "Crème", en: "Cream" },
+  themeCream: { fr: "Blanc", en: "White" },
 };
 
 const MENU = [
