@@ -52,10 +52,10 @@ def tile_uri(color):
 css = (
     "/* généré par build.py : ne pas modifier à la main */\n"
     ":root {\n"
-    f"  --pattern-cream: {tile_uri('rgba(229,216,197,0.10)')};\n"
+    f"  --pattern-cream: {tile_uri('rgba(255,255,255,0.10)')};\n"
     f"  --pattern-forest: {tile_uri('rgba(34,55,44,0.09)')};\n"
     "}\n"
-    f"html[data-theme=\"forest\"] {{ --pattern-hero: {clover_uri('#e5d8c5')}; }}\n"
+    f"html[data-theme=\"forest\"] {{ --pattern-hero: {clover_uri('#ffffff')}; }}\n"
     f"html[data-theme=\"cream\"] {{ --pattern-hero: {clover_uri('#22372c')}; }}\n"
 )
 os.makedirs(os.path.join(HERE, "css"), exist_ok=True)
