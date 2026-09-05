@@ -527,6 +527,64 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .rule svg { width: 14px; height: 14px; color: var(--ink-faint); }
 
 /* ============================================================
+   Le credo : la symbolique du trèfle (identité visuelle, p. 5)
+   — les quatre feuilles : sport, social, bien-être, plaisir ;
+   le lilas de la palette sert d'accent inattendu.
+   ============================================================ */
+
+.creed {
+  padding: 4.8rem 1.25rem 4.4rem;
+  text-align: center;
+}
+
+.creed-clover {
+  width: 42px;
+  height: 42px;
+  color: var(--lilac);
+  margin-bottom: 1.5rem;
+}
+
+.creed-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1.1rem;
+}
+
+.creed-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 22ch;
+  margin: 0 auto;
+}
+
+.creed-title em { font-style: italic; }
+.creed-title span { color: var(--accent); white-space: nowrap; }
+
+.creed-leaves {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem 1.15rem;
+  margin-top: 1.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.creed-leaves .leaf-sep {
+  width: 9px;
+  height: 9px;
+  color: var(--lilac);
+}
+
+/* ============================================================
    Bas de page : le clubhouse (même fond que la carte)
    ============================================================ */
 
