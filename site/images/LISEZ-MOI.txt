@@ -10,30 +10,31 @@ boucle à la place de la photo. Ex. espresso.mp4 à côté de espresso.webp.
 le-breakfast-club.webp    ←  Le Breakfast Club
 le-savory-club.webp    ←  Le Savory Club
 granola-bowl.webp    ←  Granola Bowl
-chickpea-salad-bowl.webp    ←  Chickpea Salad Bowl
 sweet-mediterranean-bowl.webp    ←  Sweet Mediterranean Bowl
 recovery-bowl.webp    ←  Recovery Bowl
 dragon-eyes-rice.webp    ←  Dragon Eyes Rice
-banh-mi-wrap.webp    ←  Bánh Mì Wrap
-pincho-de-tortilla-feta.webp    ←  Pincho de Tortilla Feta
-sardines-houmous-mediterranean.webp    ←  Sardines & Houmous Mediterranean
-fresh-spring-rolls.webp    ←  Fresh Spring Rolls
-mousse-au-chocolat-proteinee.webp    ←  Mousse au Chocolat Protéinée
+chickpea-salad.webp    ←  Chickpea Salad
+wrap-thon.webp    ←  Wrap Thon
+wrap-jambon.webp    ←  Wrap Jambon
+salade-classique.webp    ←  Salade Classique
+sardines-houmous.webp    ←  Sardines & Houmous
+cookie-de-saison.webp    ←  Cookie de Saison
 carrot-cake-artisanal.webp    ←  Carrot Cake Artisanal
 fondant-au-chocolat.webp    ←  Fondant au Chocolat
-bissap-maison.webp    ←  Bissap Maison
-chai-latte.webp    ←  Chai Latte
+mousse-au-chocolat-proteinee.webp    ←  Mousse au Chocolat Protéinée
 espresso.webp    ←  Espresso
+capucin.webp    ←  Capucin
 americano.webp    ←  Americano
 latte.webp    ←  Latte
 vanilla-latte.webp    ←  Vanilla Latte
-whipped-honey-latte.webp    ←  Whipped Honey Latte
-cinnamon-brown-shaken-espresso-latte.webp    ←  Cinnamon Brown Shaken Espresso Latte
-spanish-latte.webp    ←  Spanish Latte
-matcha-glace-vanille.webp    ←  Matcha Glacé Vanille
-matcha-glace-fraise.webp    ←  Matcha Glacé Fraise
-matcha-glace-mangue.webp    ←  Matcha Glacé Mangue
-oron-rich.webp    ←  Oron Rich
-green-detox.webp    ←  Green Detox
-berry-boost.webp    ←  Berry Boost
-smoothies-recovery-energy.webp    ←  Smoothies Recovery & Energy
+cappuccino.webp    ←  Cappuccino
+flat-white.webp    ←  Flat White
+milk-chocolate.webp    ←  Milk Chocolate
+matcha-latte.webp    ←  Matcha Latte
+vanilla-matcha-latte.webp    ←  Vanilla Matcha Latte
+iced-mango-matcha.webp    ←  Iced Mango Matcha
+iced-raspberry-matcha.webp    ←  Iced Raspberry Matcha
+jus-de-grenade.webp    ←  Jus de Grenade
+jus-d-orange.webp    ←  Jus d'Orange
+bissap.webp    ←  Bissap
+chai-latte.webp    ←  Chai Latte
