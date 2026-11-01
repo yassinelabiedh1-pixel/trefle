@@ -14,6 +14,8 @@
      moins de 5 Mo) et elle joue en boucle à la place de la photo, qui reste
      l'image d'attente. Ou forcer : video: "images/produits/x.mp4"
    - "layout": "plates" (grande photo au-dessus du texte).
+   - NUTRITION : nutri: { kcal, prot, gluc, lip, fib } (grammes, par portion),
+     d'après les fiches nutritionnelles. Sans "nutri", rien ne s'affiche.
    - "groups" : sous-parties d'un set (ex. Boissons).
    ============================================================ */
 
@@ -37,6 +39,11 @@ const UI_TEXT = {
   priceNote:  { fr: "Prix en dinars (DT)", en: "Prices in dinars (DT)" },
   madeNote:   { fr: "Fait maison, chaque jour", en: "Homemade, every day" },
   setWord:    { fr: "Set", en: "Set" },
+  nutriProt:  { fr: "Protéines", en: "Protein" },
+  nutriGluc:  { fr: "Glucides", en: "Carbs" },
+  nutriLip:   { fr: "Lipides", en: "Fat" },
+  nutriFib:   { fr: "Fibres", en: "Fibre" },
+  nutriNote:  { fr: "Valeurs estimées par portion", en: "Estimated values per serving" },
   themeForest:{ fr: "Forêt", en: "Forest" },
   themeCream: { fr: "Blanc", en: "White" },
 };
@@ -50,6 +57,7 @@ const MENU = [
     items: [
       {
         name: { fr: "Le Breakfast Club", en: "The Breakfast Club" },
+        nutri: { kcal: 808, prot: 35.0, gluc: 51.2, lip: 51.2, fib: 6.0 },
         desc: {
           fr: "2 œufs à la coque, bacon de bœuf, gouta fraîche, roquette, tomates cerises, feta, fruit de saison, toasts de pain complet, confiture et miel.",
           en: "2 soft-boiled eggs, beef bacon, fresh gouta cheese, rocket, cherry tomatoes, feta, seasonal fruit, wholegrain toast, jam and honey.",
@@ -59,6 +67,7 @@ const MENU = [
       },
       {
         name: { fr: "Le Savory Club", en: "The Savory Club" },
+        nutri: { kcal: 715, prot: 33.5, gluc: 31.0, lip: 51.0, fib: 3.8 },
         desc: {
           fr: "2 œufs à la coque, bacon de bœuf, gouta fraîche, roquette, tomates cerises, feta, toasts de pain complet, huile d'olive.",
           en: "2 soft-boiled eggs, beef bacon, fresh gouta cheese, rocket, cherry tomatoes, feta, wholegrain toast, olive oil.",
@@ -68,6 +77,7 @@ const MENU = [
       },
       {
         name: { fr: "Granola Bowl", en: "Granola Bowl" },
+        nutri: { kcal: 720, prot: 27.0, gluc: 67.0, lip: 37.0, fib: 9.5 },
         desc: {
           fr: "Granola aux graines, fruits secs, yaourt grec, fruits de saison et peanut butter.",
           en: "Seed granola, dried fruit, Greek yoghurt, seasonal fruit and peanut butter.",
@@ -85,6 +95,7 @@ const MENU = [
     items: [
       {
         name: { fr: "Sweet Mediterranean Bowl", en: "Sweet Mediterranean Bowl" },
+        nutri: { kcal: 558, prot: 17.1, gluc: 46.2, lip: 33.7, fib: 11.1 },
         desc: {
           fr: "Patate douce rôtie aux épices, roquette, houmous, feta, grenade et sauce tahini-citron.",
           en: "Spiced roasted sweet potato, rocket, hummus, feta, pomegranate and tahini-lemon sauce.",
@@ -94,6 +105,7 @@ const MENU = [
       },
       {
         name: { fr: "Recovery Bowl", en: "Recovery Bowl" },
+        nutri: { kcal: 468, prot: 34.8, gluc: 50.2, lip: 12.8, fib: 8.1 },
         desc: {
           fr: "Poulet basse température, kimchi de salade romaine, couscous complet, tomates cerises, concombre, oignon, vinaigrette maison.",
           en: "Slow-cooked chicken, romaine kimchi, wholegrain couscous, cherry tomatoes, cucumber, onion, house dressing.",
@@ -103,6 +115,7 @@ const MENU = [
       },
       {
         name: { fr: "Dragon Eyes Rice", en: "Dragon Eyes Rice" },
+        nutri: { kcal: 540, prot: 15.0, gluc: 62.7, lip: 28.0, fib: 8.0 },
         desc: {
           fr: "Deux œufs mollets marinés Mayak, riz vinaigré, salade de concombre Sunomono, oignon et sésame.",
           en: "Two Mayak-marinated soft eggs, vinegared rice, Sunomono cucumber salad, onion and sesame.",
@@ -112,6 +125,7 @@ const MENU = [
       },
       {
         name: { fr: "Chickpea Salad", en: "Chickpea Salad" },
+        nutri: { kcal: 288, prot: 22.2, gluc: 21.8, lip: 10.7, fib: 8.4 },
         photo: "images/produits/chickpea-salad-bowl.webp",
         desc: {
           fr: "Pois chiches, roquette, tomates cerises, poulet fumé, oignons pickles, sauce tahini-citron.",
@@ -148,6 +162,7 @@ const MENU = [
       },
       {
         name: { fr: "Salade Classique", en: "Classic Salad" },
+        nutri: { kcal: 225, prot: 6.8, gluc: 8.2, lip: 18.4, fib: 4.2 },
         desc: {
           fr: "Chicorée, romaine, roquette, tomates cerises, pickles.",
           en: "Chicory, romaine, rocket, cherry tomatoes, pickles.",
@@ -157,6 +172,7 @@ const MENU = [
       },
       {
         name: { fr: "Sardines & Houmous", en: "Sardines & Hummus" },
+        nutri: { kcal: 551, prot: 25.5, gluc: 11.1, lip: 44.8, fib: 5.5 },
         photo: "images/produits/sardines-houmous-mediterranean.webp",
         desc: {
           fr: "Sardines marinées, houmous, roquette, tomates cerises, huile d'olive et citron.",

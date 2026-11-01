@@ -506,6 +506,89 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-top: 0.3rem;
 }
 
+/* --- indices nutritionnels --- */
+
+.nutri { margin-top: 0.75rem; }
+
+.nutri summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.38rem 0.75rem 0.38rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  transition: border-color 0.25s, color 0.25s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nutri summary::-webkit-details-marker { display: none; }
+.nutri summary:hover { border-color: var(--line-strong); color: var(--ink); }
+
+.nutri-icon { width: 14px; height: 14px; fill: none; color: var(--accent); flex: none; }
+.nutri-kcal { font-weight: 600; color: var(--ink); }
+.nutri-dot { opacity: 0.5; }
+
+.nutri-more {
+  margin-left: 0.15rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 0.3s var(--ease);
+}
+
+.nutri[open] .nutri-more { transform: rotate(45deg); }
+.nutri[open] summary { border-color: var(--line-strong); color: var(--ink); }
+
+.nutri-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 0.7rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  animation: nutri-in 0.4s var(--ease);
+}
+
+.nutri-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.65rem 0.3rem;
+  text-align: center;
+}
+
+.nutri-cell + .nutri-cell { border-left: 1px solid var(--line); }
+
+.nutri-val {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.nutri-lbl {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.nutri-note {
+  font-size: 0.68rem;
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-top: 0.45rem;
+}
+
+@keyframes nutri-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* --- séparateur entre sets : ligne de court + trèfle --- */
 
 .rule {

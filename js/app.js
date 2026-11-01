@@ -152,8 +152,44 @@
       photoHTML(item) +
       '<div class="dish-body">' +
       '<div class="dish-top"><p class="dish-name">' + item.name[lang] + "</p>" + price + "</div>" +
-      desc + extra +
+      desc + extra + nutriHTML(item) +
       "</div></li>"
+    );
+  }
+
+  // Indices nutritionnels : un petit badge (feuille + kcal) qui s'ouvre au toucher
+  const LEAF =
+    '<svg class="nutri-icon" viewBox="0 0 20 20" aria-hidden="true">' +
+    '<path d="M4 16C4 9 8.5 4.5 16 4c.4 7.5-4 12-11 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<path d="M4 16 11 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
+
+  function fmt(n) {
+    return (Math.round(n * 10) / 10).toString().replace(".", lang === "fr" ? "," : ".");
+  }
+
+  function nutriHTML(item) {
+    const n = item.nutri;
+    if (!n) return "";
+    const rows = [
+      ["nutriProt", n.prot],
+      ["nutriGluc", n.gluc],
+      ["nutriLip", n.lip],
+      ["nutriFib", n.fib],
+    ].map(function (r) {
+      return '<div class="nutri-cell"><span class="nutri-val">' + fmt(r[1]) + " g</span>" +
+        '<span class="nutri-lbl">' + UI_TEXT[r[0]][lang] + "</span></div>";
+    }).join("");
+    return (
+      '<details class="nutri">' +
+      "<summary>" + LEAF +
+      '<span class="nutri-kcal">' + n.kcal + " kcal</span>" +
+      '<span class="nutri-dot">·</span>' +
+      '<span class="nutri-prot">' + fmt(n.prot) + " g " + UI_TEXT.nutriProt[lang].toLowerCase() + "</span>" +
+      '<span class="nutri-more" aria-hidden="true">+</span>' +
+      "</summary>" +
+      '<div class="nutri-grid">' + rows + "</div>" +
+      '<p class="nutri-note">' + UI_TEXT.nutriNote[lang] + "</p>" +
+      "</details>"
     );
   }
 
