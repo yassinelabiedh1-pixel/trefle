@@ -48,8 +48,8 @@
     img.closest(".dish-photo").classList.add("has-img");
   };
 
-  // Vidéo : si images/produits/<nom>.mp4 (ou .webm) existe, elle joue en boucle,
-  // muette, par-dessus la photo. Sinon la vidéo disparaît et la photo reste.
+  // Vidéo : un produit avec video: "images/produits/x.mp4" la joue en boucle,
+  // muette, par-dessus sa photo. Sans ce champ, seule la photo s'affiche.
   // iPhone : on n'attend pas les événements de chargement (Safari les retient) ;
   // on tente play() dès que le produit est à l'écran, et on juge sur le résultat.
   window.__tfVideoFail = function (src) {
@@ -120,18 +120,12 @@
       src = "images/produits/" + slug + "." + PHOTO_EXTS[0];
       attrs = ' data-slug="' + slug + '" data-ext="0"';
     }
-    let video;
+    // Vidéo uniquement si le produit en déclare une (video: "images/produits/x.mp4")
+    let video = "";
     if (item.video) {
       video =
         '<video muted loop playsinline preload="metadata" data-fixed="1">' +
         '<source src="' + item.video + '" onerror="window.__tfVideoFail(this)" />' +
-        "</video>";
-    } else {
-      const vslug = item.photo ? slugify(item.name.fr) : src.replace(/^images\/produits\//, "").replace(/\.[a-z]+$/, "");
-      video =
-        '<video muted loop playsinline preload="metadata">' +
-        '<source src="images/produits/' + vslug + '.mp4" onerror="window.__tfVideoFail(this)" />' +
-        '<source src="images/produits/' + vslug + '.webm" onerror="window.__tfVideoFail(this)" />' +
         "</video>";
     }
     return (

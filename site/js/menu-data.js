@@ -10,9 +10,9 @@
      images/produits/<nom-simplifié>.webp (puis .jpg, .jpeg, .png).
      La liste exacte des noms attendus est dans images/LISEZ-MOI.txt.
      Pour forcer un autre fichier : photo: "images/produits/x.jpg"
-   - VIDÉO : déposez images/produits/<nom-simplifié>.mp4 (muette, courte,
-     moins de 5 Mo) et elle joue en boucle à la place de la photo, qui reste
-     l'image d'attente. Ou forcer : video: "images/produits/x.mp4"
+   - VIDÉO (optionnel) : ajouter au produit video: "images/produits/x.mp4"
+     (muette, courte, moins de 5 Mo) ; elle joue en boucle à la place de la
+     photo, qui reste l'image d'attente.
    - "layout": "plates" (grande photo au-dessus du texte).
    - NUTRITION : nutri: { kcal, prot, gluc, lip, fib } (grammes, par portion),
      d'après les fiches nutritionnelles. Sans "nutri", rien ne s'affiche.
