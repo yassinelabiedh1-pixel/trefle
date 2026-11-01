@@ -36,6 +36,7 @@ const UI_TEXT = {
   leafJoy:    { fr: "Plaisir", en: "Pleasure" },
   labelClub:  { fr: "Le club", en: "The club" },
   labelHours: { fr: "Horaires", en: "Hours" },
+  hoursDays:  { fr: "Tous les jours", en: "Every day" },
   priceNote:  { fr: "Prix en dinars (DT)", en: "Prices in dinars (DT)" },
   madeNote:   { fr: "Fait maison, chaque jour", en: "Homemade, every day" },
   setWord:    { fr: "Set", en: "Set" },
