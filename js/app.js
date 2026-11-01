@@ -14,6 +14,8 @@
   let lang = localStorage.getItem("tf-lang") || "fr";
   let theme = localStorage.getItem("tf-theme") || document.documentElement.dataset.theme || "forest";
 
+  // à augmenter quand des photos sont remplacées sous le même nom (vide le cache des téléphones)
+  const IMG_V = "?v=2";
   const PHOTO_EXTS = ["webp", "jpg", "jpeg", "png"];
   const CLOVER = '<svg viewBox="0 0 1120.4 1118.89" aria-hidden="true"><use href="#clover"/></svg>';
 
@@ -36,7 +38,7 @@
     const next = Number(img.dataset.ext) + 1;
     if (next < PHOTO_EXTS.length) {
       img.dataset.ext = String(next);
-      img.src = "images/produits/" + img.dataset.slug + "." + PHOTO_EXTS[next];
+      img.src = "images/produits/" + img.dataset.slug + "." + PHOTO_EXTS[next] + IMG_V;
     } else {
       img.remove();
     }
@@ -135,7 +137,7 @@
     return (
       '<div class="dish-photo">' +
       CLOVER +
-      '<img src="' + src + '" alt="' + item.name[lang] + '" loading="lazy"' + attrs +
+      '<img src="' + src + IMG_V + '" alt="' + item.name[lang] + '" loading="lazy"' + attrs +
       ' onload="window.__tfImgLoaded(this)" onerror="window.__tfImgFallback(this)" />' +
       video +
       '<span class="stamp">' + CLOVER + "</span>" +
