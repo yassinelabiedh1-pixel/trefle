@@ -1,37 +1,48 @@
 PHOTOS — Treffel Padel Club
 
 Photos du club (fiches de production, étiquettes retirées, recadrées) :
+  chickpea-salad-bowl.webp
+  dragon-eyes-rice.webp
+  granola-bowl.webp
   le-breakfast-club.webp
   le-savory-club.webp
-  granola-bowl.webp
+  recovery-bowl.webp
   salade-classique.webp
   sardines-houmous-mediterranean.webp
   sweet-mediterranean-bowl.webp
-  chickpea-salad-bowl.webp
-  recovery-bowl.webp
-  dragon-eyes-rice.webp
 
-Photos provisoires Unsplash / Pexels (licence libre, usage commercial autorisé), à remplacer :
+Photos provisoires Unsplash (licence libre, usage commercial autorisé), à remplacer par vos photos :
   americano.webp  —  julie_soul  —  https://unsplash.com/photos/1551727609-1f89c019b5ca
   banh-mi-wrap.webp  —  minhanh258  —  https://unsplash.com/photos/1600454309261-3dc9b7597637
   berry-boost.webp  —  sarahjulia  —  https://unsplash.com/photos/1615478503562-ec2d8aa0e24e
   bissap-maison.webp  —  foodess  —  https://unsplash.com/photos/1499638673689-79a0b5115d87
+  cappuccino.webp  —  pundalex  —  https://unsplash.com/photos/1534234757579-8ad69d218ad4
+  capucin.webp  —  theblowup  —  https://unsplash.com/photos/1599648918269-be678fd72631
   carrot-cake-artisanal.webp  —  orkunorcan  —  https://unsplash.com/photos/1676300186098-9b5ae9916e3c
   chai-latte.webp  —  fauzanazhima  —  https://unsplash.com/photos/1578899952107-9c390f1af1b7
   cinnamon-brown-shaken-espresso-latte.webp  —  demidearest  —  https://unsplash.com/photos/1461023058943-07fcbe16d735
+  cookie-de-saison.webp  —  olegbrsnv  —  https://unsplash.com/photos/1782852232336-feb9db2fcb03
   espresso.webp  —  nate_dumlao  —  https://unsplash.com/photos/1579992357154-faf4bde95b3d
-  espresso.mp4  —  Pexels  —  https://www.pexels.com/video/a-close-up-of-an-espresso-machine-27810938/
+  flat-white.webp  —  thatjoebloke  —  https://unsplash.com/photos/1577968897966-3d4325b36b61
   fondant-au-chocolat.webp  —  grissphoto  —  https://unsplash.com/photos/1617305855058-336d24456869
   fresh-spring-rolls.webp  —  diegoarenasderodrigo  —  https://unsplash.com/photos/1761315413785-0bf98364ceab
   green-detox.webp  —  alexlvrs  —  https://unsplash.com/photos/1610622930069-177b599953eb
+  iced-raspberry-matcha.webp  —  lazizli  —  https://unsplash.com/photos/1751033390078-b605c8727fa4
+  jus-d-orange.webp  —  mateusz_feliksik  —  https://unsplash.com/photos/1613478223719-2ab802602423
+  jus-de-grenade.webp  —  sahandbabali  —  https://unsplash.com/photos/1603028769333-009800f4e059
   latte.webp  —  nate_dumlao  —  https://unsplash.com/photos/1529892485617-25f63cd7b1e9
   matcha-glace-fraise.webp  —  lazizli  —  https://unsplash.com/photos/1751033390078-b605c8727fa4
   matcha-glace-mangue.webp  —  cceee  —  https://unsplash.com/photos/1751563721808-3b81940b88f7
   matcha-glace-vanille.webp  —  gaiacoffee  —  https://unsplash.com/photos/1749280447307-31a68eb38673
+  matcha-latte.webp  —  cherstve_pechivo  —  https://unsplash.com/photos/1766426910014-63a302fa137e
+  milk-chocolate.webp  —  giancarloduarte  —  https://unsplash.com/photos/1517578239113-b03992dcdd25
   mousse-au-chocolat-proteinee.webp  —  americanheritagechocolate  —  https://unsplash.com/photos/1673551494277-92204546b504
   oron-rich.webp  —  sebastiancoman  —  https://unsplash.com/photos/1579954115545-a95591f28bfc
   pincho-de-tortilla-feta.webp  —  blackieshoot  —  https://unsplash.com/photos/1639669794539-952631b44515
   smoothies-recovery-energy.webp  —  cravethebenefits  —  https://unsplash.com/photos/1505252585461-04db1eb84625
   spanish-latte.webp  —  tavis_beck  —  https://unsplash.com/photos/1558122104-355edad709f6
   vanilla-latte.webp  —  storybyphil  —  https://unsplash.com/photos/1559001724-fbad036dbc9e
+  vanilla-matcha-latte.webp  —  ninjason  —  https://unsplash.com/photos/1515823064-d6e0c04616a7
   whipped-honey-latte.webp  —  ld05  —  https://unsplash.com/photos/1677700802019-fb965c32a94d
+  wrap-jambon.webp  —  ano_tome  —  https://unsplash.com/photos/1581570378527-9585a11deea2
+  wrap-thon.webp  —  michu_dangquang  —  https://unsplash.com/photos/1563282397-cdc218eccfda
