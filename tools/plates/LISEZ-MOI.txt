@@ -1,0 +1,4 @@
+Outil de retouche des photos des fiches de production (étiquettes et flèches retirées, plat détouré sur fond pierre).
+Sources : extraire les images de 'fiches de production Treffle.pdf' dans un dossier, puis :
+  python -I tools/plates/plates.py <dossier_images> <dossier_sortie> tools/plates/ovr
+Réglages par plat : tools/plates/ovr/<slug>.json (voir l'en-tête de plates.py).

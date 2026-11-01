@@ -1,28 +1,18 @@
 {
  "granola-bowl": {
-  "unsplash_id": "photo-1692071106919-01bc0b9b0919",
-  "photographer": "natalie_behn",
-  "url": "https://unsplash.com/photos/1692071106919-01bc0b9b0919"
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  },
  "le-breakfast-club": {
-  "unsplash_id": "photo-1618666185600-1f9f09d5eb2c",
-  "photographer": "nickkimel",
-  "url": "https://unsplash.com/photos/1618666185600-1f9f09d5eb2c"
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  },
  "le-savory-club": {
-  "unsplash_id": "photo-1635432877848-9c86755eb2f9",
-  "photographer": "camerasimagination",
-  "url": "https://unsplash.com/photos/1635432877848-9c86755eb2f9"
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  },
  "sweet-mediterranean-bowl": {
-  "unsplash_id": "photo-1631311695255-8dde6bf96cb5",
-  "photographer": "cbw15",
-  "url": "https://unsplash.com/photos/1631311695255-8dde6bf96cb5"
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  },
  "dragon-eyes-rice": {
-  "unsplash_id": "photo-1600688654899-379ec76aca42",
-  "photographer": "emanuelekstrom",
-  "url": "https://unsplash.com/photos/1600688654899-379ec76aca42"
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  },
  "banh-mi-wrap": {
   "unsplash_id": "photo-1600454309261-3dc9b7597637",
@@ -35,9 +25,7 @@
   "url": "https://unsplash.com/photos/1639669794539-952631b44515"
  },
  "sardines-houmous-mediterranean": {
-  "unsplash_id": "photo-1612570964312-e0f339a84d6f",
-  "photographer": "picture_taken",
-  "url": "https://unsplash.com/photos/1612570964312-e0f339a84d6f"
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  },
  "fresh-spring-rolls": {
   "unsplash_id": "photo-1761315413785-0bf98364ceab",
@@ -140,18 +128,17 @@
   "url": "https://unsplash.com/photos/1505252585461-04db1eb84625"
  },
  "chickpea-salad-bowl": {
-  "unsplash_id": "photo-1697155836261-f7afd5353e64",
-  "photographer": "rashpalsingh",
-  "url": "https://unsplash.com/photos/1697155836261-f7afd5353e64"
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  },
  "recovery-bowl": {
-  "unsplash_id": "photo-1762631383378-115f2d4cbe07",
-  "photographer": "joestudios",
-  "url": "https://unsplash.com/photos/1762631383378-115f2d4cbe07"
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  },
  "espresso.mp4": {
   "source": "Pexels",
   "url": "https://www.pexels.com/video/a-close-up-of-an-espresso-machine-27810938/",
   "licence": "Pexels (usage commercial libre)"
+ },
+ "salade-classique": {
+  "source": "Treffel Padel Club — fiches de production (photos du club, retouchées pour la carte)"
  }
 }
