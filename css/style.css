@@ -1,17 +1,17 @@
 /* ============================================================
-   Treffel Padel Club — La carte
-   Deux options de couleur : html[data-theme="forest"] (fond forêt,
-   écriture blanche) et html[data-theme="cream"] (fond blanc,
-   écriture forêt — l'inverse). Le trèfle est la seule ornementation.
+   Treffel Coffee House — La carte
+   Deux options de couleur, d'après le brand book Coffee House :
+   html[data-theme="bordeaux"] (fond bordeaux #471224, écriture crème #fff9f2)
+   html[data-theme="beige"]    (fond crème #fff9f2, écriture bordeaux #471224)
+   Accents : or pâle #f3e8b8 sur bordeaux, vert forêt #22372c sur beige.
+   Le trèfle est la seule ornementation.
    ============================================================ */
 
 :root {
+  --bordeaux: #471224;
+  --cream: #fff9f2;
   --forest: #22372c;
-  --green: #1b5632;
-  --bordeaux: #671c32;
-  --pale: #f1efb6;
-  --cream: #ffffff;
-  --lilac: #ddd3e7;
+  --gold: #f3e8b8;
 
   --serif: "Teodor", "Instrument Serif", Georgia, serif;
   --sans: "Bagoss Standard", "Instrument Sans", "Segoe UI", sans-serif;
@@ -19,34 +19,34 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html[data-theme="forest"] {
-  --bg: var(--forest);
-  --bg-alt: #1e3128;
+html[data-theme="bordeaux"] {
+  --bg: var(--bordeaux);
+  --bg-alt: #3c0f1e;
   --ink: var(--cream);
-  --ink-soft: rgba(255, 255, 255, 0.72);
-  --ink-faint: rgba(255, 255, 255, 0.42);
-  --line: rgba(255, 255, 255, 0.28);
-  --line-strong: rgba(255, 255, 255, 0.6);
-  --accent: var(--pale);
-  --photo-bg: #1b5632;
-  --photo-clover: rgba(255, 255, 255, 0.18);
+  --ink-soft: rgba(255, 249, 242, 0.74);
+  --ink-faint: rgba(255, 249, 242, 0.46);
+  --line: rgba(255, 249, 242, 0.26);
+  --line-strong: rgba(255, 249, 242, 0.6);
+  --accent: var(--gold);
+  --photo-bg: #5a1c31;
+  --photo-clover: rgba(255, 249, 242, 0.18);
   --pattern: var(--pattern-cream);
-  --bar: rgba(34, 55, 44, 0.94);
+  --bar: rgba(71, 18, 36, 0.94);
 }
 
-html[data-theme="cream"] {
+html[data-theme="beige"] {
   --bg: var(--cream);
-  --bg-alt: #f4f4f1;
-  --ink: var(--forest);
-  --ink-soft: rgba(34, 55, 44, 0.74);
-  --ink-faint: rgba(34, 55, 44, 0.42);
-  --line: rgba(34, 55, 44, 0.26);
-  --line-strong: rgba(34, 55, 44, 0.6);
-  --accent: var(--bordeaux);
-  --photo-bg: #eef0ec;
-  --photo-clover: rgba(34, 55, 44, 0.2);
+  --bg-alt: #f7eee3;
+  --ink: var(--bordeaux);
+  --ink-soft: rgba(71, 18, 36, 0.76);
+  --ink-faint: rgba(71, 18, 36, 0.5);
+  --line: rgba(71, 18, 36, 0.22);
+  --line-strong: rgba(71, 18, 36, 0.56);
+  --accent: var(--forest);
+  --photo-bg: var(--gold);
+  --photo-clover: rgba(71, 18, 36, 0.2);
   --pattern: var(--pattern-forest);
-  --bar: rgba(255, 255, 255, 0.94);
+  --bar: rgba(255, 249, 242, 0.94);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -126,6 +126,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: flex;
   align-items: center;
   gap: 0.55rem;
+  white-space: nowrap;
+  flex-shrink: 0;
   font-size: 0.68rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -134,7 +136,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .topbar-clover { width: 14px; height: 14px; }
 
-.switches { display: flex; gap: 0.4rem; }
+.switches { display: flex; gap: 0.4rem; flex-shrink: 0; }
+
+@media (max-width: 400px) {
+  .topbar { gap: 0.5rem; }
+  .topbar-brand { letter-spacing: 0.16em; gap: 0.4rem; font-size: 0.64rem; }
+  .switches { gap: 0.3rem; }
+  .switch { padding: 0.42rem 0.55rem; letter-spacing: 0.08em; font-size: 0.64rem; }
+  .switch .dot { display: none; }
+}
 
 .switch {
   display: inline-flex;
@@ -236,6 +246,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   width: 100%;
   height: auto;
   animation: rise 1.2s 0.9s var(--ease) both;
+}
+
+.hero-house {
+  font-size: clamp(0.7rem, 2.6vw, 1.35rem);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0.9rem 0 0.2rem;
+  padding-left: 0.42em;
+  color: var(--ink);
+  animation: rise 1.2s 1.05s var(--ease) both;
 }
 
 @keyframes rise {
@@ -623,7 +644,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .creed-clover {
   width: 42px;
   height: 42px;
-  color: var(--lilac);
+  color: var(--accent);
   margin-bottom: 1.5rem;
 }
 
@@ -664,11 +685,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .creed-leaves .leaf-sep {
   width: 9px;
   height: 9px;
-  color: var(--lilac);
+  color: var(--accent);
 }
 
 /* ============================================================
-   Bas de page : le clubhouse (même fond que la carte)
+   Bas de page : la maison (même fond que la carte)
    ============================================================ */
 
 .footer {
@@ -763,6 +784,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-emblem, .hero-kicker, .hero-title, .hero-line, .baseline, .hero-wordmark { animation: none; }
+  .hero-emblem, .hero-kicker, .hero-title, .hero-line, .baseline, .hero-wordmark, .hero-house { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }

@@ -52,11 +52,11 @@ def tile_uri(color):
 css = (
     "/* généré par build.py : ne pas modifier à la main */\n"
     ":root {\n"
-    f"  --pattern-cream: {tile_uri('rgba(255,255,255,0.10)')};\n"
-    f"  --pattern-forest: {tile_uri('rgba(34,55,44,0.09)')};\n"
+    f"  --pattern-cream: {tile_uri('rgba(255,249,242,0.10)')};\n"
+    f"  --pattern-forest: {tile_uri('rgba(71,18,36,0.09)')};\n"
     "}\n"
-    f"html[data-theme=\"forest\"] {{ --pattern-hero: {clover_uri('#ffffff')}; }}\n"
-    f"html[data-theme=\"cream\"] {{ --pattern-hero: {clover_uri('#22372c')}; }}\n"
+    f"html[data-theme=\"bordeaux\"] {{ --pattern-hero: {clover_uri('#fff9f2')}; }}\n"
+    f"html[data-theme=\"beige\"] {{ --pattern-hero: {clover_uri('#471224')}; }}\n"
 )
 os.makedirs(os.path.join(HERE, "css"), exist_ok=True)
 open(os.path.join(HERE, "css", "pattern.css"), "w", encoding="utf-8").write(css)
@@ -77,7 +77,7 @@ js = ("const fs=require('fs');const src=fs.readFileSync(process.argv[1],'utf8');
 names = json.loads(subprocess.check_output(["node", "-e", js, os.path.join(HERE, "js", "menu-data.js")]).decode("utf-8"))
 os.makedirs(os.path.join(HERE, "images", "produits"), exist_ok=True)
 lines = [
-    "PHOTOS DES PRODUITS — Treffel Padel Club",
+    "PHOTOS DES PRODUITS — Treffel Coffee House",
     "",
     "Déposez chaque photo dans images/produits/ avec exactement ce nom",
     "(format .webp de préférence, sinon .jpg / .jpeg / .png).",

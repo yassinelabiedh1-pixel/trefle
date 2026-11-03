@@ -1,4 +1,4 @@
-PHOTOS DES PRODUITS — Treffel Padel Club
+PHOTOS DES PRODUITS — Treffel Coffee House
 
 Déposez chaque photo dans images/produits/ avec exactement ce nom
 (format .webp de préférence, sinon .jpg / .jpeg / .png).
