@@ -1,4 +1,4 @@
-# QR code Treffel « feuilles de trèfle »
+# QR code Treffel Coffee House « feuilles de trèfle » (bordeaux et beige)
 #   python qr/make_qr_art.py            (génère les PNG dans qr/)
 #
 # Chaque module du code est une petite feuille du trèfle Treffel : trois coins
@@ -17,11 +17,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 URL = open(os.path.join(HERE, "URL.txt"), encoding="utf-8").read().strip()
 
-FOREST = (0x22, 0x37, 0x2C)
-GREEN = (0x1B, 0x56, 0x32)
-BORDEAUX = (0x67, 0x1C, 0x32)
-CREAM = (0xE5, 0xD8, 0xC5)
-PALE = (0xF1, 0xEF, 0xB6)
+# Palette du brand book Treffel Coffee House
+BORDEAUX = (0x47, 0x12, 0x24)   # #471224
+CREAM = (0xFF, 0xF9, 0xF2)      # #fff9f2
+FOREST = (0x22, 0x37, 0x2C)     # #22372c
+GOLD = (0xF3, 0xE8, 0xB8)       # #f3e8b8
 
 MOD = 40          # taille finale d'un module, en px
 SS = 3            # suréchantillonnage (bords lisses)
@@ -175,14 +175,14 @@ def card(code, ink, ground, suffix):
     t1 = "Scannez, la carte est là."
     f1 = font(["Teodor-Regular.ttf", "C:/Windows/Fonts/georgiai.ttf"], int(S * 0.062))
     d.text(((W - d.textlength(t1, font=f1)) // 2, y + int(bottom * 0.16)), t1, font=f1, fill=ink)
-    t2 = "P A D E L   C L U B"
+    t2 = "C O F F E E   H O U S E"
     f2 = font(["C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf"], int(S * 0.026))
     d.text(((W - d.textlength(t2, font=f2)) // 2, y + int(bottom * 0.58)), t2, font=f2, fill=line_col)
     out.save(os.path.join(HERE, f"treffel-qr-carte{suffix}.png"))
 
 
 if __name__ == "__main__":
-    for ink, ground, inner, suffix in [(FOREST, CREAM, FOREST, ""), (CREAM, FOREST, PALE, "-fonce")]:
+    for ink, ground, inner, suffix in [(CREAM, BORDEAUX, GOLD, "-bordeaux"), (BORDEAUX, CREAM, FOREST, "-beige")]:
         code, removed, n = render(ink, ground, inner, suffix)
         card(code, ink, ground, suffix)
         print(f"treffel-qr{suffix}.png  {n}x{n} modules, {removed} retirés pour le trèfle ({removed / (n * n):.1%})")

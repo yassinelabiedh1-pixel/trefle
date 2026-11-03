@@ -1,5 +1,5 @@
 /* ============================================================
-   Treffel Padel Club — rendu de la carte
+   Treffel Coffee House — rendu de la carte
    - bascule FR / EN et bascule de couleur (forêt / crème)
    - photo automatique par produit : images/produits/<nom-simplifié>
    - index collant qui suit le set en cours
@@ -12,7 +12,9 @@
   const themeBtn = document.getElementById("themeToggle");
 
   let lang = localStorage.getItem("tf-lang") || "fr";
-  let theme = localStorage.getItem("tf-theme") || document.documentElement.dataset.theme || "forest";
+  const THEMES = ["bordeaux", "beige"];
+  let theme = localStorage.getItem("tf-theme-ch");
+  if (THEMES.indexOf(theme) < 0) theme = document.documentElement.dataset.theme || "bordeaux";
 
   // à augmenter quand des photos sont remplacées sous le même nom (vide le cache des téléphones)
   const IMG_V = "?v=2";
@@ -234,7 +236,7 @@
 
     themeBtn.innerHTML =
       '<span class="dot"></span>' +
-      "<span class=\"on\">" + (theme === "forest" ? UI_TEXT.themeCream[lang] : UI_TEXT.themeForest[lang]) + "</span>";
+      "<span class=\"on\">" + (theme === "bordeaux" ? UI_TEXT.themeBeige[lang] : UI_TEXT.themeBordeaux[lang]) + "</span>";
 
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       const key = el.getAttribute("data-i18n");
@@ -331,8 +333,8 @@
   });
 
   themeBtn.addEventListener("click", function () {
-    theme = theme === "forest" ? "cream" : "forest";
-    localStorage.setItem("tf-theme", theme);
+    theme = theme === "bordeaux" ? "beige" : "bordeaux";
+    localStorage.setItem("tf-theme-ch", theme);
     render();
   });
 

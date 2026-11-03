@@ -1,5 +1,5 @@
 /* ============================================================
-   LA CARTE DE TREFFEL PADEL CLUB
+   LA CARTE DE TREFFEL COFFEE HOUSE
    ------------------------------------------------------------
    C'est ICI que vous modifiez la carte.
    - Chaque produit a : name (fr / en), desc (fr / en), extra
@@ -22,7 +22,7 @@
 const HERO_IMAGE = "";
 
 const UI_TEXT = {
-  eyebrow:    { fr: "Padel Club", en: "Padel Club" },
+  eyebrow:    { fr: "Coffee House", en: "Coffee House" },
   kicker:     { fr: "La carte du club", en: "The club menu" },
   title1:     { fr: "Le vrai club,", en: "The real club," },
   title2:     { fr: "comme avant.", en: "like before." },
@@ -45,8 +45,8 @@ const UI_TEXT = {
   nutriLip:   { fr: "Lipides", en: "Fat" },
   nutriFib:   { fr: "Fibres", en: "Fibre" },
   nutriNote:  { fr: "Valeurs estimées par portion", en: "Estimated values per serving" },
-  themeForest:{ fr: "Forêt", en: "Forest" },
-  themeCream: { fr: "Blanc", en: "White" },
+  themeBordeaux:{ fr: "Bordeaux", en: "Burgundy" },
+  themeBeige: { fr: "Beige", en: "Beige" },
 };
 
 const MENU = [
