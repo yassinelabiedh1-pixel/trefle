@@ -52,7 +52,7 @@ def svg_rgba(name, color, height):
     z = height / page.rect.height
     pix = page.get_pixmap(matrix=pymupdf.Matrix(z * 2, z * 2), alpha=True)
     im = Image.frombytes("RGBA", (pix.width, pix.height), pix.samples)
-    return im.resize((max(1, round(im.width / 2)), max(1, round(im.height / 2))), Image.LANCZOS)
+    return im.resize((max(1, round(im.width / 2)), max(1, round(im.height / 2))), Image.BOX)
 
 
 def leaf(draw, x0, y0, x1, y1, sharp, fill, r_round, r_sharp):
@@ -138,7 +138,7 @@ def render(ink, ground, eye_inner, suffix):
     clover_px = Image.new("RGB", (cw, cw), ink)
     img.paste(clover_px, (c0, c0), clover)
 
-    final = img.resize((size // SS, size // SS), Image.LANCZOS)
+    final = img.reduce(SS)                     # filtre boîte : pas de halo hors palette
     final.save(os.path.join(HERE, f"treffel-qr{suffix}.png"))
     return final, removed, n
 
@@ -146,23 +146,9 @@ def render(ink, ground, eye_inner, suffix):
 def card(code, ink, ground, suffix):
     S = code.width
     # le code porte déjà sa marge de silence (QUIET modules, couleur du fond) :
-    # la marque reste AU-DESSUS de cette marge, jamais dedans.
+    # le logo reste AU-DESSUS de cette marge, jamais dedans.
     q = int(S * QUIET / (S / MOD))
     W = int(S * 1.06)
-    wm = svg_rgba("treffel-wordmark-horizontal.svg", ink, int(S * 0.075))
-    top = int(S * 0.07) + wm.height
-    bottom = int(S * 0.24)
-    gap = -int(q * 0.45)                       # la ligne de court entre un peu dans la marge
-    H = top + S + gap + bottom
-    out = Image.new("RGB", (W, H), ground)
-    d = ImageDraw.Draw(out)
-    out.paste(code, ((W - S) // 2, top))
-    out.paste(wm, ((W - wm.width) // 2, int(S * 0.06)), wm)
-    line_col = tuple(int(a * 0.55 + b * 0.45) for a, b in zip(ink, ground))
-    y = top + S + gap + int(bottom * 0.06)
-    lw = max(2, S // 420)
-    d.line([(W // 2 - int(S * 0.38), y), (W // 2 + int(S * 0.38), y)], fill=line_col, width=lw)
-    d.line([(W // 2, y - S // 70), (W // 2, y + S // 70)], fill=line_col, width=lw)
 
     def font(paths, size):
         for f in paths:
@@ -172,12 +158,48 @@ def card(code, ink, ground, suffix):
                 continue
         return ImageFont.load_default()
 
+    # logo du brand book : trèfle + TREFFEL, puis COFFEE HOUSE centré sous les lettres
+    # (qui commencent à 23,5 % du logo), 63 % de leur largeur, même encre
+    wm = svg_rgba("treffel-wordmark-horizontal.svg", ink, int(S * 0.085))
+    letters_x0 = wm.width * 0.235
+    letters_w = wm.width - letters_x0
+    house = "COFFEE HOUSE"
+    track = 0.2
+    probe = font(["C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf"], 100)
+    tmp = ImageDraw.Draw(Image.new("L", (1, 1)))
+    w100 = sum(tmp.textlength(ch, font=probe) for ch in house) + track * 100 * (len(house) - 1)
+    fsize = max(10, int(100 * 0.63 * letters_w / w100))
+    f_house = font(["C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf"], fsize)
+    # dans le logo, les lettres TREFFEL vont de 21 % à 72 % de sa hauteur (le trèfle descend plus bas)
+    cap = wm.height * 0.507
+    logo_y = int(S * 0.05)
+    bbox_top = ImageDraw.Draw(Image.new("L", (1, 1))).textbbox((0, 0), "C", font=f_house)[1]
+    house_y = logo_y + int(wm.height * 0.72 + cap * 0.49) - bbox_top
+    top = house_y + int(fsize * 1.15)
+
+    bottom = int(S * 0.17)
+    gap = -int(q * 0.45)                        # la ligne entre un peu dans la marge
+    H = top + S + gap + bottom
+    out = Image.new("RGB", (W, H), ground)
+    d = ImageDraw.Draw(out)
+    out.paste(code, ((W - S) // 2, top))
+    wm_x = (W - wm.width) // 2
+    out.paste(wm, (wm_x, logo_y), wm)
+    # COFFEE HOUSE, lettre par lettre (interlettrage 0,2 em)
+    tw = sum(d.textlength(ch, font=f_house) for ch in house) + track * fsize * (len(house) - 1)
+    x = wm_x + letters_x0 + (letters_w - tw) / 2
+    for ch in house:
+        d.text((x, house_y), ch, font=f_house, fill=ink)
+        x += d.textlength(ch, font=f_house) + track * fsize
+
+    line_col = tuple(int(a * 0.55 + b * 0.45) for a, b in zip(ink, ground))
+    y = top + S + gap + int(bottom * 0.06)
+    lw = max(2, S // 420)
+    d.line([(W // 2 - int(S * 0.38), y), (W // 2 + int(S * 0.38), y)], fill=line_col, width=lw)
+    d.line([(W // 2, y - S // 70), (W // 2, y + S // 70)], fill=line_col, width=lw)
     t1 = "Scannez, la carte est là."
     f1 = font(["Teodor-Regular.ttf", "C:/Windows/Fonts/georgiai.ttf"], int(S * 0.062))
-    d.text(((W - d.textlength(t1, font=f1)) // 2, y + int(bottom * 0.16)), t1, font=f1, fill=ink)
-    t2 = "C O F F E E   H O U S E"
-    f2 = font(["C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf"], int(S * 0.026))
-    d.text(((W - d.textlength(t2, font=f2)) // 2, y + int(bottom * 0.58)), t2, font=f2, fill=line_col)
+    d.text(((W - d.textlength(t1, font=f1)) // 2, y + int(bottom * 0.22)), t1, font=f1, fill=ink)
     out.save(os.path.join(HERE, f"treffel-qr-carte{suffix}.png"))
 
 

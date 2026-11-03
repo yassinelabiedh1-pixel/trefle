@@ -24,7 +24,7 @@ html[data-theme="bordeaux"] {
   --bg-alt: #3c0f1e;
   --ink: var(--cream);
   --ink-soft: rgba(255, 249, 242, 0.74);
-  --ink-faint: rgba(255, 249, 242, 0.46);
+  --ink-faint: rgba(255, 249, 242, 0.54);
   --line: rgba(255, 249, 242, 0.26);
   --line-strong: rgba(255, 249, 242, 0.6);
   --accent: var(--gold);
@@ -36,10 +36,10 @@ html[data-theme="bordeaux"] {
 
 html[data-theme="beige"] {
   --bg: var(--cream);
-  --bg-alt: #f7eee3;
+  --bg-alt: #f6eee8;
   --ink: var(--bordeaux);
   --ink-soft: rgba(71, 18, 36, 0.76);
-  --ink-faint: rgba(71, 18, 36, 0.5);
+  --ink-faint: rgba(71, 18, 36, 0.64);
   --line: rgba(71, 18, 36, 0.22);
   --line-strong: rgba(71, 18, 36, 0.56);
   --accent: var(--forest);
@@ -161,9 +161,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .switch:hover { border-color: var(--line-strong); }
 
-.switch span { opacity: 0.45; transition: opacity 0.2s; }
+.switch span { opacity: 0.66; transition: opacity 0.2s; }
 .switch span.on { opacity: 1; font-weight: 600; }
-.switch .sep { opacity: 0.35; }
+.switch .sep { opacity: 0.5; }
 
 .switch .dot {
   width: 10px;
@@ -249,12 +249,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .hero-house {
-  font-size: clamp(0.7rem, 2.6vw, 1.35rem);
-  letter-spacing: 0.42em;
+  font-size: calc((100vw - 2.5rem) * 0.048);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   text-align: center;
-  margin: 0.9rem 0 0.2rem;
-  padding-left: 0.42em;
+  margin: 0.55em 0 0.3rem 23.5%;
+  text-indent: 0.2em;
+  line-height: 1;
   color: var(--ink);
   animation: rise 1.2s 1.05s var(--ease) both;
 }
@@ -299,7 +300,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   letter-spacing: 0.2em;
   text-transform: uppercase;
   white-space: nowrap;
-  opacity: 0.5;
+  opacity: 0.66;
   transition: opacity 0.25s;
 }
 
@@ -552,7 +553,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .nutri-icon { width: 14px; height: 14px; fill: none; color: var(--accent); flex: none; }
 .nutri-kcal { font-weight: 600; color: var(--ink); }
-.nutri-dot { opacity: 0.5; }
+.nutri-dot { opacity: 0.7; }
 
 .nutri-more {
   margin-left: 0.15rem;
@@ -689,7 +690,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ============================================================
-   Bas de page : la maison (même fond que la carte)
+   Bas de page : la maison (fond légèrement décalé, --bg-alt)
    ============================================================ */
 
 .footer {
@@ -715,14 +716,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .footer-emblem { width: 56px; height: auto; margin-bottom: 1.4rem; }
 
-.footer-wordmark { width: 150px; height: auto; }
+.footer-wordmark { width: 230px; height: auto; }
 
 .footer-eyebrow {
-  font-size: 0.64rem;
-  letter-spacing: 0.34em;
+  width: 230px;
+  padding-left: calc(230px * 0.235);
+  box-sizing: border-box;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
   text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: 0.7rem;
+  color: var(--ink);
+  margin-top: 0.55rem;
 }
 
 .footer-grid {
@@ -781,6 +786,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .rule { padding: 0 2.4rem; }
   .footer { padding: 0 2.4rem 2.6rem; }
   .footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.switch, .nutri summary { border-color: var(--line-strong); }
+
+@media (min-width: 720px) {
+  .hero-house { font-size: calc((100vw - 4.8rem) * 0.048); }
 }
 
 @media (prefers-reduced-motion: reduce) {

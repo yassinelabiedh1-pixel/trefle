@@ -1,4 +1,4 @@
-# Treffel Padel Club — La carte
+# Treffel Coffee House — La carte
 
 Site de la carte du club : `site/`.
 
