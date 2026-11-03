@@ -1,7 +1,9 @@
 # Treffel Padel Club — La carte
 
-Site de la carte du club : `site/`. Publié sur GitHub Pages (branche `gh-pages`) :
-https://yassinelabiedh1-pixel.github.io/trefle/
+Site de la carte du club : `site/`.
+
+- **Adresse officielle (QR code)** : https://treffel.pages.dev — Cloudflare Pages, projet `treffel`, bande passante illimitée.
+- **Copie de secours** : https://yassinelabiedh1-pixel.github.io/trefle/ — GitHub Pages, branche `gh-pages`.
 
 ## Mettre la carte à jour
 
@@ -11,7 +13,12 @@ https://yassinelabiedh1-pixel.github.io/trefle/
 
 Le site est en ligne environ une minute plus tard. Le QR code (dossier `qr/`) ne change jamais.
 
-## Netlify (optionnel)
+## Cloudflare
 
-Sur app.netlify.com : « Add new site » → « Import an existing project » → choisir ce dépôt
-GitHub. Base directory : `site`. Build command : vide. Publish directory : `site`.
+Publication avec Wrangler (`npm install -g wrangler`, puis `wrangler login` une fois) :
+
+```bash
+wrangler pages deploy site --project-name treffel --branch main
+```
+
+`publier.cmd` fait tout : sauvegarde Git, Cloudflare, puis la copie GitHub.

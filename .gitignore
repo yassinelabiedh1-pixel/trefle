@@ -7,3 +7,10 @@
 /.claude/
 /qr/*.png
 __pycache__/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
