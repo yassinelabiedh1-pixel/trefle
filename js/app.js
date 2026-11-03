@@ -1,6 +1,6 @@
 /* ============================================================
    Treffel Coffee House — rendu de la carte
-   - bascule FR / EN et bascule de couleur (forêt / crème)
+   - bascule FR / EN et bascule de couleur (bordeaux / beige)
    - photo automatique par produit : images/produits/<nom-simplifié>
    - index collant qui suit le set en cours
    ============================================================ */
@@ -11,9 +11,13 @@
   const langBtn = document.getElementById("langToggle");
   const themeBtn = document.getElementById("themeToggle");
 
-  let lang = localStorage.getItem("tf-lang") || "fr";
+  // stockage local protégé : certains navigateurs intégrés le bloquent (la carte doit s'afficher quand même)
+  function store(k, v) {
+    try { return v === undefined ? localStorage.getItem(k) : localStorage.setItem(k, v); } catch (e) { return null; }
+  }
+  let lang = store("tf-lang") || "fr";
   const THEMES = ["bordeaux", "beige"];
-  let theme = localStorage.getItem("tf-theme-ch");
+  let theme = store("tf-theme-ch");
   if (THEMES.indexOf(theme) < 0) theme = document.documentElement.dataset.theme || "bordeaux";
 
   // à augmenter quand des photos sont remplacées sous le même nom (vide le cache des téléphones)
@@ -228,6 +232,8 @@
   function render() {
     document.documentElement.lang = lang;
     document.documentElement.dataset.theme = theme;
+    const tc = document.querySelector('meta[name="theme-color"]');
+    if (tc) tc.setAttribute("content", theme === "bordeaux" ? "#471224" : "#fff9f2");
 
     langBtn.innerHTML =
       '<span class="' + (lang === "fr" ? "on" : "") + '">FR</span>' +
@@ -328,13 +334,13 @@
 
   langBtn.addEventListener("click", function () {
     lang = lang === "fr" ? "en" : "fr";
-    localStorage.setItem("tf-lang", lang);
+    store("tf-lang", lang);
     render();
   });
 
   themeBtn.addEventListener("click", function () {
     theme = theme === "bordeaux" ? "beige" : "bordeaux";
-    localStorage.setItem("tf-theme-ch", theme);
+    store("tf-theme-ch", theme);
     render();
   });
 
