@@ -197,8 +197,12 @@ def card(code, ink, ground, suffix):
     lw = max(2, S // 420)
     d.line([(W // 2 - int(S * 0.38), y), (W // 2 + int(S * 0.38), y)], fill=line_col, width=lw)
     d.line([(W // 2, y - S // 70), (W // 2, y + S // 70)], fill=line_col, width=lw)
-    t1 = "Scannez, la carte est là."
-    f1 = font(["Teodor-Regular.ttf", "C:/Windows/Fonts/georgiai.ttf"], int(S * 0.062))
+    t1 = "Scan to enter the world of Treffel flavours"
+    fs1 = int(S * 0.062)
+    f1 = font(["Teodor-Regular.ttf", "C:/Windows/Fonts/georgiai.ttf"], fs1)
+    while d.textlength(t1, font=f1) > S * 0.84:   # la phrase tient sur une ligne, dans la largeur du code
+        fs1 -= 2
+        f1 = font(["Teodor-Regular.ttf", "C:/Windows/Fonts/georgiai.ttf"], fs1)
     d.text(((W - d.textlength(t1, font=f1)) // 2, y + int(bottom * 0.22)), t1, font=f1, fill=ink)
     out.save(os.path.join(HERE, f"treffel-qr-carte{suffix}.png"))
 

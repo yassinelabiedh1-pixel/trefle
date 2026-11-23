@@ -21,7 +21,7 @@
   if (THEMES.indexOf(theme) < 0) theme = document.documentElement.dataset.theme || "bordeaux";
 
   // à augmenter quand des photos sont remplacées sous le même nom (vide le cache des téléphones)
-  const IMG_V = "?v=2";
+  const IMG_V = "?v=3";
   const PHOTO_EXTS = ["webp", "jpg", "jpeg", "png"];
   const CLOVER = '<svg viewBox="0 0 1120.4 1118.89" aria-hidden="true"><use href="#clover"/></svg>';
 
@@ -117,6 +117,7 @@
   function pad(n) { return n < 10 ? "0" + n : String(n); }
 
   function photoHTML(item) {
+    if (item.photo === false) return "";   // produit sans photo (photo: false)
     let src, attrs;
     if (item.photo) {
       src = item.photo;
@@ -150,7 +151,7 @@
     const extra = item.extra && item.extra[lang] ? '<p class="dish-extra">' + item.extra[lang] + "</p>" : "";
     const price = item.price ? '<p class="dish-price">' + item.price + "</p>" : "";
     return (
-      '<li class="dish">' +
+      '<li class="dish' + (item.photo === false ? " no-photo" : "") + '">' +
       photoHTML(item) +
       '<div class="dish-body">' +
       '<div class="dish-top"><p class="dish-name">' + item.name[lang] + "</p>" + price + "</div>" +
@@ -196,7 +197,13 @@
   }
 
   function ledgerHTML(items, layout) {
-    return '<ol class="ledger' + (layout === "compact" ? " compact" : "") + '">' + items.map(dishHTML).join("") + "</ol>";
+    const open = '<ol class="ledger' + (layout === "compact" ? " compact" : "");
+    // produits en photo d'abord, puis les lignes sans photo : la grille reste régulière
+    const pics = items.filter(function (it) { return it.photo !== false; });
+    const lines = items.filter(function (it) { return it.photo === false; });
+    if (!pics.length || !lines.length) return open + '">' + items.map(dishHTML).join("") + "</ol>";
+    return open + '">' + pics.map(dishHTML).join("") + "</ol>" +
+      open + ' lines">' + lines.map(dishHTML).join("") + "</ol>";
   }
 
   function groupHTML(g, layout) {

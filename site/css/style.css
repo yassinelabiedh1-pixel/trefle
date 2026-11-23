@@ -490,6 +490,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .dish-body { min-width: 0; }
 
+/* produit sans photo : une ligne de registre, nom et prix */
+.dish.no-photo { padding: 1rem 0 1.05rem; }
+.ledger.lines { border-top-color: var(--line-strong); }
+
 .dish-top {
   display: flex;
   justify-content: space-between;
