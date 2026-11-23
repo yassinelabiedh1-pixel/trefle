@@ -13,6 +13,7 @@
    - VIDÉO (optionnel) : ajouter au produit video: "images/produits/x.mp4"
      (muette, courte, moins de 5 Mo) ; elle joue en boucle à la place de la
      photo, qui reste l'image d'attente.
+   - SANS PHOTO : photo: false (une simple ligne nom + prix).
    - "layout": "plates" (grande photo au-dessus du texte).
    - NUTRITION : nutri: { kcal, prot, gluc, lip, fib } (grammes, par portion),
      d'après les fiches nutritionnelles. Sans "nutri", rien ne s'affiche.
@@ -241,16 +242,16 @@ const MENU = [
           en: "House-made cane sugar syrups · Prices: hot / iced · Extra espresso shot +2 DT · Plant-based milk +4 DT",
         },
         items: [
-          { name: { fr: "Espresso", en: "Espresso" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "5 DT" },
-          { name: { fr: "Capucin", en: "Capucin" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "7 DT" },
-          { name: { fr: "Americano", en: "Americano" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "6 / 8 DT" },
+          { name: { fr: "Espresso", en: "Espresso" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "5 DT" },
+          { name: { fr: "Capucin", en: "Capucin" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "7 DT" },
+          { name: { fr: "Americano", en: "Americano" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "6 / 8 DT" },
           { name: { fr: "Latte", en: "Latte" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "8 / 10 DT" },
-          { name: { fr: "Vanilla Latte", en: "Vanilla Latte" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "12 / 14 DT" },
-          { name: { fr: "Cappuccino", en: "Cappuccino" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "8 / 10 DT" },
-          { name: { fr: "Flat White", en: "Flat White" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "8 / 10 DT" },
-          { name: { fr: "Milk Chocolate", en: "Milk Chocolate" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "8 DT" },
-          { name: { fr: "Matcha Latte", en: "Matcha Latte" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "14 / 15 DT" },
-          { name: { fr: "Vanilla Matcha Latte", en: "Vanilla Matcha Latte" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "16 / 18 DT" },
+          { name: { fr: "Vanilla Latte", en: "Vanilla Latte" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "12 / 14 DT" },
+          { name: { fr: "Cappuccino", en: "Cappuccino" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "8 / 10 DT" },
+          { name: { fr: "Flat White", en: "Flat White" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "8 / 10 DT" },
+          { name: { fr: "Milk Chocolate", en: "Milk Chocolate" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "8 DT" },
+          { name: { fr: "Matcha Latte", en: "Matcha Latte" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "14 / 15 DT" },
+          { name: { fr: "Vanilla Matcha Latte", en: "Vanilla Matcha Latte" }, photo: false, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "16 / 18 DT" },
           { name: { fr: "Iced Mango Matcha", en: "Iced Mango Matcha" }, photo: "images/produits/matcha-glace-mangue.webp", desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "20 DT" },
           { name: { fr: "Iced Raspberry Matcha", en: "Iced Raspberry Matcha" }, desc: { fr: "", en: "" }, extra: { fr: "", en: "" }, price: "22 DT" },
         ],
@@ -259,10 +260,10 @@ const MENU = [
         title: { fr: "Jus & Infusions", en: "Juices & Infusions" },
         note: { fr: "", en: "" },
         items: [
-          { name: { fr: "Jus de Grenade", en: "Pomegranate Juice" }, desc: { fr: "Jus frais de grenade pressée.", en: "Freshly pressed pomegranate juice." }, extra: { fr: "", en: "" }, price: "12 DT" },
-          { name: { fr: "Jus d'Orange", en: "Orange Juice" }, desc: { fr: "Jus d'orange fraîchement pressé.", en: "Freshly squeezed orange juice." }, extra: { fr: "", en: "" }, price: "8 DT" },
-          { name: { fr: "Bissap", en: "Bissap" }, photo: "images/produits/bissap-maison.webp", desc: { fr: "Infusion maison de fleurs d'hibiscus.", en: "House hibiscus flower infusion." }, extra: { fr: "", en: "" }, price: "12 DT" },
-          { name: { fr: "Chai Latte", en: "Chai Latte" }, desc: { fr: "Thé noir infusé aux épices & lait.", en: "Spiced black tea & milk." }, extra: { fr: "", en: "" }, price: "14 DT" },
+          { name: { fr: "Jus de Grenade", en: "Pomegranate Juice" }, photo: false, desc: { fr: "Jus frais de grenade pressée.", en: "Freshly pressed pomegranate juice." }, extra: { fr: "", en: "" }, price: "12 DT" },
+          { name: { fr: "Jus d'Orange", en: "Orange Juice" }, photo: false, desc: { fr: "Jus d'orange fraîchement pressé.", en: "Freshly squeezed orange juice." }, extra: { fr: "", en: "" }, price: "8 DT" },
+          { name: { fr: "Bissap", en: "Bissap" }, photo: false, desc: { fr: "Infusion maison de fleurs d'hibiscus.", en: "House hibiscus flower infusion." }, extra: { fr: "", en: "" }, price: "12 DT" },
+          { name: { fr: "Chai Latte", en: "Chai Latte" }, photo: false, desc: { fr: "Thé noir infusé aux épices & lait.", en: "Spiced black tea & milk." }, extra: { fr: "", en: "" }, price: "14 DT" },
         ],
       },
     ],
